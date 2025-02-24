@@ -37,3 +37,68 @@ module top_module(
     assign out[7:0] =in[31:24];
 
 endmodule
+
+#Code for Bitwise Operators
+
+module top_module( 
+    input [2:0] a,
+    input [2:0] b,
+    output [2:0] out_or_bitwise,
+    output out_or_logical,
+    output [5:0] out_not
+);
+    assign out_or_bitwise[0]=a[0] | b[0];
+    assign out_or_bitwise[1]=a[1] | b[1];
+    assign out_or_bitwise[2]=a[2] | b[2];
+    assign out_or_logical=a || b;
+    assign out_not[0] = ~a[0];
+    assign out_not[1] = ~a[1];
+    assign out_not[2] = ~a[2];
+    assign out_not[3] = ~b[0];
+    assign out_not[4] = ~b[1];
+    assign out_not[5] = ~b[2];
+
+endmodule
+
+#Code for Four-input gates
+
+module top_module( 
+    input [3:0] in,
+    output out_and,
+    output out_or,
+    output out_xor
+);
+
+    assign out_and = in[0] && in[1] && in[2] && in[3];
+    assign out_or = in[0] | in[1] | in[2] | in[3];
+    assign out_xor = in[0] ^  in[1] ^ in[2] ^ in[3];
+endmodule
+
+#Code for Vector concatenation operator
+
+module top_module (
+    input [4:0] a, b, c, d, e, f,
+    output [7:0] w, x, y, z );//
+
+    assign {w,x,y,z } = {a,b,c,d,e,f,2'b11};
+
+endmodule
+
+#Code for Vector reversal1
+
+module top_module( 
+    input [7:0] in,
+    output [7:0] out
+);
+
+    assign out={in[0],in[1],in[2],in[3],in[4],in[5],in[6],in[7]};
+endmodule
+
+#Code for Replication operator
+
+module top_module (
+    input [7:0] in,
+    output [31:0] out );//
+
+    assign out={{24{in[7]}} ,in};
+endmodule
